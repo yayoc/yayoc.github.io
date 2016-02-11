@@ -1,0 +1,26 @@
+---
+layout: post
+title:  "git logで更新したファイルを抽出する"
+date:   2016-02-11 22:09:53 +0900
+categories: jekyll 
+---
+
+git logから編集したファイルを抽出する必要があったので、メモ。
+
+```
+git log --author yayoc --name-only --oneline | awk '{print $1}' | sed -e 's/^[^\/]\{7\}$//g' | sort -f | uniq | less
+```
+
+```
+--since '2016-01-01' --until '2016-02-01'
+```
+
+合わせて、since, untilオプションで期間も指定できる
+
+
+
+ref
+[git-log](:https://git-scm.com/docs/git-log)
+
+
+
