@@ -1,0 +1,83 @@
+---
+layout: post
+title:  "imgcatを使えるようにする"
+date:   2016-02-23 09:09:53 +0900
+categories: imgcat
+---
+
+iTerm2のポストを見るとiTerm version3がBeta版になっていたので、見ていると
+
+
+```
+Inline Images
+Using the imgcat script, iTerm2 can display image files right in the terminal--even animated GIFs. See the Inline Images document for details.
+```
+
+インラインでターミナル上に画像を表示することができるのか！となり、
+導入してみようと思いました。
+
+##1.必須項目
+* Ranger
+* iTerm >= 2.9
+* imgcat
+
+##2.インストール
+
+### 2.1 iTerm
+[iTerm2.9](:https://www.iterm2.com/version3.html)をダウンロードしてください。
+
+### 2.2 Ranger
+
+CLIで動くファイルマネージャー。
+
+{% highlight shell %}
+$brew install ranger
+{% endhighlight %}
+
+**homebrew**　が入ってない場合は、下記コマンドで入れてください。
+
+{% highlight shell %}
+$/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+{% endhighlight %}
+
+### 2.3 imgcat
+
+{% highlight shell %}
+$wget -O /usr/local/bin/imgcat https://raw.githubusercontent.com/gnachman/iTerm2/master/tests/imgcat
+{% endhighlight %}
+
+### 2.4 依存関係
+ranger で様々なメディアを閲覧するために下記項目インストールしておいたほうがいいみたいです。
+
+{% highlight shell %}
+$brew install libcaca highlight atool lynx w3m elinks poppler transmission mediainfo exiftool
+{% endhighlight %}
+
+## 3 設定
+
+rangerの設定ファイルを生成します。
+~/.config/ranger 配下に設定関係のファイルが生成されます。
+
+{% highlight shell %}
+$ranger --copy-config=all
+{% endhighlight %}
+
+次に、~/.config/ranger/rc.confを編集して
+
+```
+set preview_images true
+```
+上記行のコメントアウトを外します。
+
+これでiTerm上で画像をプレビューすることが出来ます。
+
+{% highlight shell %}
+$imgcat ~/sample.png
+{% endhighlight %}
+
+
+ref
+[RANGER IMAGE PREVIEW ON OSX WITH ITERM2](:http://www.everythingcli.org/ranger-image-preview-on-osx-with-iterm2/)
+
+
+
