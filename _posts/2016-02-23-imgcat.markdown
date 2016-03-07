@@ -16,12 +16,15 @@ Using the imgcat script, iTerm2 can display image files right in the terminal--e
 インラインでターミナル上に画像を表示することができるのか！となり、
 導入してみようと思いました。
 
-##1.必須項目
+## 1.必須項目
+
 * Ranger
+
 * iTerm >= 2.9
+
 * imgcat
 
-##2.インストール
+## 2.インストール
 
 ### 2.1 iTerm
 [iTerm2.9](:https://www.iterm2.com/version3.html)をダウンロードしてください。
