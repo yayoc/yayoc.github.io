@@ -14,9 +14,9 @@ swiftを使って[コマンドラインツール](:https://github.com/yayoc/thum
 
 @3x画像サイズのリソースを引数に渡すことで、iOS画像リソース用の各サムネイルが生成されます。
 
-#swiftをコマンドラインで実行する際のtips
+## swiftをコマンドラインで実行する際のtips
 
-##引数を受け取る
+### 引数を受け取る
 
 *Process.arguments*でコマンドライン引数を受け取ることができます。
 
@@ -34,7 +34,7 @@ $./main.swift ~/sample.png
 
 という風になります。
 
-##exitする
+### exitする
 
 {% highlight swift %}
 exit(EXIT_SUCCESS)
@@ -43,11 +43,9 @@ exit(EXIT_FAILURE)
 
 で処理をexitすることができます。
 
-#まとめ
+## まとめ
 * よりswiftを身近に使える+コマンドラインからOS XのAPI触れるの楽しと思います。
 * 業務レベルで採用するときは開発環境などの検討事項は多そうな気がします。
-
-
 
 ref
 [Swift2で作るコマンドラインツール](:http://techlife.cookpad.com/entry/2015/11/09/150248)
