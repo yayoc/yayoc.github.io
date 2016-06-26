@@ -17,9 +17,9 @@ Reactjs を利用したプロジェクトでパフォーマンス改善を行っ
 
 ## Reactjsのベンチマーク測定
 
-まず、reactjsのベンチマークを図るためにアドオンのperfを使います。
-今回のプロジェクトではrailsで動かしていた都合
-react-railsのgemを使っていたので、
+まず、reactjsのベンチマークを図るためにアドオンのperfを使います。  
+今回のプロジェクトではrailsで動かしていた都合  
+react-railsのgemを使っていたので、  
 development.rbに下記の1行を追加します。
 
 {% highlight ruby %}
@@ -57,26 +57,26 @@ this.setState({ something: something }, function() {
 
 ## Shouldupdatecomponentの実装
 
-ベンチマークを元にボトルネックを探し出します。
-ReactJSは**Shouldupdatecomponent**というライフサイクルイベントを初めから用意してくれているのですが、
-この関数はコンポーネントが新しいprops, stateを受け取ったあとに、レンダリング前に呼ばれます。
-そして、この関数でfalseを返すと、対象コンポーネントをレンダリングしないように制御することができます。
-デフォルトでこの関数はtrueを返すようになっているので、この関数を実装しない場合は、対象コンポーネントは新たなprops, stateを受け取るたびに再レンダリングされてしまします。
+ベンチマークを元にボトルネックを探し出します。  
+ReactJSは**Shouldupdatecomponent**というライフサイクルイベントを初めから用意してくれているのですが、   
+この関数はコンポーネントが新しいprops, stateを受け取ったあとに、レンダリング前に呼ばれます。 
+そして、この関数でfalseを返すと、対象コンポーネントをレンダリングしないように制御することができます。  
+デフォルトでこの関数はtrueを返すようになっているので、  
+この関数を実装しない場合は、対象コンポーネントは新たなprops, stateを受け取るたびに再レンダリングされてしまします。
 
 そういったことから、ReactJSのパフォーマンスが気になった場合（特に、たくさんのコンポーネントを持っているとき）はshouldComponentUpdateを利用して、改善を図ることが可能です。
 
-`
-If performance is a bottleneck, especially with dozens or hundreds of components, useshouldComponentUpdate to speed up your app.
-`
+>If performance is a bottleneck, especially with dozens or hundreds of components, useshouldComponentUpdate to speed up your app.
 
-たとえば、下記のようなコンポーネントがあって、Add New Bookボタンを押すと、
- 新規で追加するBookコンポーネント以外も再処理が走ります。
+たとえば、下記のようなコンポーネントがあって、  
+Add New Bookボタンを押すと、 
+新規で追加するBookコンポーネント以外も再処理が走ります。
 
 {% gist 49bb11e761720db0f789ae0ef9f92c9f %}
 
 ![performance log](http://i.imgur.com/FxdQShW.png)
 
-では、Bookの中に、
+では、Bookの中に、 
 下記のようにShouldupdatecomponentを実装してみます。
 
 {% highlight jsx %}
@@ -104,9 +104,9 @@ var Book = React.createClass({
 
 ## Immutable jsの採用
 
-ただし、先ほど追加した下記の処理には問題があります。
-たとえば、Bookのauthorオブジェクトだけを更新した際にも下記の処理はfalseを返してしまい、
-コンポーネントが再描画されません。
+ただし、先ほど追加した下記の処理には問題があります。  
+たとえば、Bookのauthorオブジェクトだけを更新した際にも下記の処理はfalseを返してしまい、   
+コンポーネントが再描画されません。  
 また、それらの変更に対応するようにshouldComponentUpdateの処理を修正すると
 バグを生みやすいコードが作られる可能性が高まってしまいます。
 
@@ -120,7 +120,8 @@ shouldComponentUpdate: function(nextProps, nextState) {
 
 そこで、最後に、**ImmutableJS**を採用する話になります。
 
-[ImmutableJS](https://facebook.github.io/immutable-js/)はFacebookが開発したライブラリで、List, Stack, Map, OrderMap, Set, OrderedSet, Recordといったイミュータブルなデータ構造を提供してくれます。Javascriptにおける、データのコピーや受け渡しで煩雑になる部分を最小化してくれるライブラリです。
+[ImmutableJS](https://facebook.github.io/immutable-js/)はFacebookが開発したライブラリで、List, Stack, Map, OrderMap, Set, OrderedSet, Recordといったイミュータブルなデータ構造を提供してくれます。  
+Javascriptにおける、データのコピーや受け渡しで煩雑になる部分を最小化してくれるライブラリです。
 
 shouldComponentUpdateの比較も下記のように簡単に変更することが可能になります。
 
@@ -149,7 +150,7 @@ Immutableな状態にしたデータはgetメソッドを利用して取得し�
 
 **this.props.book.getIn([‘author’, ‘name’])**
 
-これでデータをイミュータブルに扱えて、安心してshouldComponentUpdateを使えるようになりました。
+これでデータをイミュータブルに扱えて、安心してshouldComponentUpdateを使えるようになりました。  
 それ以外のAPIについては、こちらのドキュメントを参考にしてください。
 [immutable-js docs](https://facebook.github.io/immutable-js/docs/#/)
 
