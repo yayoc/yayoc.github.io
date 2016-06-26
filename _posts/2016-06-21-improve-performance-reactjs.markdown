@@ -15,6 +15,8 @@ Reactjs を利用したプロジェクトでパフォーマンス改善を行っ
 
 になります。
 
+## Reactjsのベンチマーク測定
+
 まず、reactjsのベンチマークを図るためにアドオンのperfを使います。
 今回のプロジェクトではrailsで動かしていた都合
 react-railsのgemを使っていたので、
@@ -43,11 +45,17 @@ this.setState({ something: something }, function() {
 
 すると、chromeのコンソールログに下記のようなテーブルフォーマットで解析データを吐き出してくれます。
 
+![printInclusive](http://i.imgur.com/Xs6GCwm.png)
+
 **Perf.printInclusive()**
 はレンダリングに要した時間を全てひっくるめて表示します
 
+![printWasted](http://i.imgur.com/hC20jt0.png)
+
 **Perf.printWasted()**
 は各コンポーネントがレンダリングされず、ユーザがDOM操作できない時間を表示します。
+
+## Shouldupdatecomponentの実装
 
 ベンチマークを元にボトルネックを探し出します。
 ReactJSは**Shouldupdatecomponent**というライフサイクルイベントを初めから用意してくれているのですが、
@@ -57,87 +65,21 @@ ReactJSは**Shouldupdatecomponent**というライフサイクルイベントを
 
 そういったことから、ReactJSのパフォーマンスが気になった場合（特に、たくさんのコンポーネントを持っているとき）はshouldComponentUpdateを利用して、改善を図ることが可能です。
 
-```
+`
 If performance is a bottleneck, especially with dozens or hundreds of components, useshouldComponentUpdate to speed up your app.
-```
+`
 
 たとえば、下記のようなコンポーネントがあって、Add New Bookボタンを押すと、
  新規で追加するBookコンポーネント以外も再処理が走ります。
 
-{% highlight js %}
+{% gist 49bb11e761720db0f789ae0ef9f92c9f %}
 
-var Books = React.createClass({
-  getInitialState: function( ) {
-    var book1 = { id: 1, title: 'book title1', price: 500, author: { name: 'yayoc1', gender: 'male' } };
-    var book2 = { id: 2, title: 'book title2', price: 300, author: { name: 'yayoc2', gender: 'female' } };
-    var book3 = { id: 3, title: 'book title3', price: 250, author: { name: 'yayoc3', gender: 'female' } };
-    var books = [ book1, book2, book3 ];
-    return {
-      books: books
-    };
-  },
-  addBook: function() {
-    var lastBook = this.state.books[this.state.books.length - 1];
-    var newBook = { id: lastBook.id + 1, title: `book title${lastBook.id+1}`, price: 1000, author: { name: 'yayoc_new', gender: 'female' } };
-    var newBooks = this.state.books.concat([newBook]);
-    React.addons.Perf.start();
-    this.setState( { books: newBooks }, function() {
-      React.addons.Perf.stop();
-      React.addons.Perf.printInclusive();
-      React.addons.Perf.printWasted();
-    });
-  },
-  render: function() {
-    return (
-        <div>
-          <button onClick={this.addBook}> Add new Book</button>
-          <BookList books={this.state.books} />
-        </div>
-      )
-  }
-});
-
-var BookList = React.createClass({
-  render: function() {
-    var bookNodes = this.props.books.map(function(book) {
-      return <Book key={book.id} book={book} />
-    });
-    return (
-        <ul>
-            {bookNodes}
-        </ul>
-    )
-  }
-});
-
-var Book = React.createClass({
-  render: function() {
-    return  (
-      <li>
-        <span>{this.props.book.title}</span>
-        <span>{this.props.book.price}</span>
-        <BookAuthor author={this.props.book.author} />
-      </li>
-    )
-  }
-});
-
-var BookAuthor = React.createClass({
-  render: function() {
-    return (
-      <div>
-        <span>{this.props.author.name}</span>
-        <span>{this.props.author.gender}</span>
-      </div>
-    )
-  }
-});
-{% endhighlight %}
+![performance log](http://i.imgur.com/FxdQShW.png)
 
 では、Bookの中に、
 下記のようにShouldupdatecomponentを実装してみます。
 
-{% highlight js %}
+{% highlight jsx %}
 
 var Book = React.createClass({
   shouldComponentUpdate: function(nextProps, nextState) {
@@ -156,7 +98,11 @@ var Book = React.createClass({
 
 {% endhighlight %}
 
+![performance log](http://i.imgur.com/5jMSwou.png)
+
 対象のコンポーネントだけが更新されるようになりました。
+
+## Immutable jsの採用
 
 ただし、先ほど追加した下記の処理には問題があります。
 たとえば、Bookのauthorオブジェクトだけを更新した際にも下記の処理はfalseを返してしまい、
@@ -164,7 +110,7 @@ var Book = React.createClass({
 また、それらの変更に対応するようにshouldComponentUpdateの処理を修正すると
 バグを生みやすいコードが作られる可能性が高まってしまいます。
 
-{% highlight js %}
+{% highlight jsx %}
 
 shouldComponentUpdate: function(nextProps, nextState) {
     return nextProps.book !== this.props.book;
@@ -172,13 +118,13 @@ shouldComponentUpdate: function(nextProps, nextState) {
 
 {% endhighlight %}
 
-そこで、最後に、3のImmutableJSを採用する話になります。
+そこで、最後に、**ImmutableJS**を採用する話になります。
 
-ImmutableJSはFacebookが開発したライブラリで、List, Stack, Map, OrderMap, Set, OrderedSet, Recordといったイミュータブルなデータ構造を提供してくれます。Javascriptにおける、データのコピーや受け渡しで煩雑になる部分を最小化してくれるライブラリです。
+[ImmutableJS](https://facebook.github.io/immutable-js/)はFacebookが開発したライブラリで、List, Stack, Map, OrderMap, Set, OrderedSet, Recordといったイミュータブルなデータ構造を提供してくれます。Javascriptにおける、データのコピーや受け渡しで煩雑になる部分を最小化してくれるライブラリです。
 
 shouldComponentUpdateの比較も下記のように簡単に変更することが可能になります。
 
-{% highlight js %}
+{% highlight jsx %}
 
 shouldComponentUpdate: function(nextProps, nextState) {
     return !Immutable.is(nextProps.book, this.props.book);
@@ -186,81 +132,10 @@ shouldComponentUpdate: function(nextProps, nextState) {
 
 {% endhighlight %}
 
-では、Immutable JSを利用するように上記のコンポーネントを書き換えます。
+では、ImmutableJSを利用するために、上記のコンポーネントを下記のように書き換えます。
 
-{% highlight js %}
+{% gist a8902265768f571c24fee6977ea69ac9 %}
 
-var Books = React.createClass({
-  getInitialState: function( ) {
-    var book1 = { id: 1, title: 'book title1', price: 500, author: { name: 'yayoc1', gender: 'male' } };
-    var book2 = { id: 2, title: 'book title2', price: 300, author: { name: 'yayoc2', gender: 'female' } };
-    var book3 = { id: 3, title: 'book title3', price: 250, author: { name: 'yayoc3', gender: 'female' } };
-    var books = [ book1, book2, book3 ];
-    return {
-      books: Immutable.fromJS(books)
-    };
-  },
-  addBook: function() {
-    var lastBookId = this.state.books.getIn([this.state.books.size - 1, "id"]);
-    var newBook = Immutable.fromJS({ id: lastBookId + 1, title: `book title${lastBookId+1}`, price: 1000, author: { name: 'yayoc_new', gender: 'female' } });
-    var newBooks = this.state.books.push(newBook);
-    React.addons.Perf.start();
-    this.setState( { books: newBooks }, function() {
-      React.addons.Perf.stop();
-      React.addons.Perf.printInclusive();
-      React.addons.Perf.printWasted();
-    });
-  },
-  render: function() {
-    return (
-        <div>
-          <button onClick={this.addBook} > Add new Book</button>
-          <BookList books={this.state.books} />
-        </div>
-      )
-  }
-});
-
-var BookList = React.createClass({
-  render: function() {
-    var bookNodes = this.props.books.map(function(book) {
-      return <Book key={book.get('id')} book={book} />
-    });
-    return (
-        <ul>
-            {bookNodes}
-        </ul>
-    )
-  }
-});
-
-var Book = React.createClass({
-  shouldComponentUpdate: function(nextProps, nextState) {
-    return !Immutable.is(nextProps.book, this.props.book);
-  },
-  render: function() {
-    return  (
-      <li>
-        <span>{this.props.book.get('title')}</span>
-        <span>{this.props.book.get('price')}</span>
-        <BookAuthor author={this.props.book.get('author')} />
-      </li>
-    )
-  }
-});
-
-var BookAuthor = React.createClass({
-  render: function() {
-    return (
-      <div>
-        <span>{this.props.author.get('name')}</span>
-        <span>{this.props.author.get('gender')}</span>
-      </div>
-    )
-  }
-});
-
-{% endhighlight %}
 
 まず、state booksで管理するデータをイミュータブルな状態にします。
 
@@ -275,6 +150,8 @@ Immutableな状態にしたデータはgetメソッドを利用して取得し�
 **this.props.book.getIn([‘author’, ‘name’])**
 
 これでデータをイミュータブルに扱えて、安心してshouldComponentUpdateを使えるようになりました。
+それ以外のAPIについては、こちらのドキュメントを参考にしてください。
+[immutable-js docs](https://facebook.github.io/immutable-js/docs/#/)
 
 まとめ
 
