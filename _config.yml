@@ -11,9 +11,10 @@ email: n.yayoshi@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   黒いの大好き  
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://yayoc.github.io/" # the base hostname & protocol for your site
+url: "http://blog.yayoc.com/" # the base hostname & protocol for your site
 twitter_username: __yayoc
 github_username:  yayoc
+gems: [jekyll-watch, jekyll-gist]
 
 # Build settings
 markdown: kramdown
