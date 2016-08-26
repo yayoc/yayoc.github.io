@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Objective-Cで書いたinstancetypeを返すメソッドがswiftから実行出来ない場合の対処"
-date:   2016-08-18 10:00:00 +0900
+date:   2016-08-26 10:00:00 +0900
 categories: swift
 ---
 
