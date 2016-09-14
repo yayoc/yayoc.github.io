@@ -61,6 +61,7 @@ open > public > internal > fileprivate > private
 ```
 
 参考資料  
+
 * [0117-non-public-subclassable-by-default.md](https://github.com/apple/swift-evolution/blob/master/proposals/0117-non-public-subclassable-by-default.md?utm_source=swifting.io&utm_medium=web&utm_campaign=blog%20post)
 * [0025-scoped-access-level.md](https://github.com/apple/swift-evolution/blob/master/proposals/0025-scoped-access-level.md?utm_source=swifting.io&utm_medium=web&utm_campaign=blog%20post)
 * [Swift 3 Access Control (Xcode 8 Beta 6)](https://swifting.io/blog/2016/08/17/22-swift-3-access-control-beta-6/?utm_campaign=This%2BWeek%2Bin%2BSwift&utm_medium=email&utm_source=This_Week_in_Swift_100)
