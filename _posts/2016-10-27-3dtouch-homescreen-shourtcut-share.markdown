@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "3Dタッチ, ホームスクリーンのQuickActionについて"
-date:   2016-10-25 00:00:00 +0900
-categories: swift
+date:   2016-10-27 00:00:00 +0900
+categories: iOS
 ---
 
 アプリアイコンを3Dタッチすることで、QuickActionを表示することができます。
