@@ -1,15 +1,15 @@
 ---
 layout: post
 title:  "3Dタッチ, ホームスクリーンのQuickActionについて"
-date:   2016-10-27 00:00:00 +0900
+date:   2016-10-27 10:00:00 +0900
 categories: iOS
 ---
 
 アプリアイコンを3Dタッチすることで、QuickActionを表示することができます。
 設定するには主に２つの方法があり、
 
-1. StaticアクションをInfo.plistに指定する
-2. DynamicアクションをUIApplicationのshortcutItemsプロパティに指定する
+1. StaticアクションをInfo.plistに指定する 
+2. DynamicアクションをUIApplicationのshortcutItemsプロパティに指定する 
 
 という方法があります。
 ここで重要なのは
@@ -20,7 +20,8 @@ categories: iOS
 
 ということです。
 
-また、各アプリに表示される「Share :appname」のアクションに関しては、Developmentのプロビジョニングプロファイルで実機ビルドした場合は表示されず、
+また、各アプリに表示される「Share :appname」のアクションに関しては、 
+Developmentのプロビジョニングプロファイルで実機ビルドした場合は表示されず、  
 Storeからダウンロードしたものについて付与されるようです。
 
 実装は[サンプル](https://developer.apple.com/library/content/samplecode/ApplicationShortcuts/Introduction/Intro.html#//apple_ref/doc/uid/TP40016545)を参考にするといいかと思います。
