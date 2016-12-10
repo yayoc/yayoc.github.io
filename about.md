@@ -4,5 +4,4 @@ title: About
 permalink: /about/
 ---
 
-I'm software engineer at [WEAR](http://wear.jp)
-
+I'm software engineer from Tokyo.
