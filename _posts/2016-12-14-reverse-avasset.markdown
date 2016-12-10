@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "AVAssetReader, AVAssetWriterを利用して逆再生動画を生成する"
-date:   2016-12-14 00:00:00 +0900
+date:   2016-12-14 00:00:00 +0000
 categories: swift
 ---
 
