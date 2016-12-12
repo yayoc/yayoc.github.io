@@ -32,4 +32,5 @@ AVUtilities.reverse(originalAsset, outputURL: output, completion: { [unowned sel
 参考資料  
 
 * [Reversing videos efficiently with AVFoundation](http://www.andyhin.com/post/5/reverse-video-avfoundation)
-* [yayoc/Reverse-AVAsset-Efficient](https://github.com/yayoc/Reverse-AVAsset-Efficient)
+* [yayoc/Reverse-AVAsset-Efficient](https://github.com/yayoc/Reverse-AVAsset-Efficient) 
+* [Reverse app](https://itunes.apple.com/jp/app/reverse-reverse-movie-camera/id1173143338?l=en&mt=8)
