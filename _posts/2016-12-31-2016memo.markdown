@@ -1,0 +1,132 @@
+---
+layout: post
+title:  "2016 memo"
+date:   2016-12-14 00:00:00 +0000
+categories: log
+---
+
+今年も終わりなので、2016年をざっくり振り返っておこうかと。
+
+## 仕事関係
+
+### 転職
+
+ZOZOTOWN・WEARを運営するSTARTTODAY CO.,LTD.を退職し、  
+UNIQLOやGUを運営するFast Retailing Co., Ltd.に入社した。  
+プロダクトを一気通貫して生産・販売、世界に展開する力があるアパレルブランドであることに魅力を感じたから。  
+外国人のエンジニアも多く、刺激が多い環境だと思う。  
+当面はアプリやwebのフロントエンドのエンジニアとして働くことになりそう。  
+ファッション業界に籍を置く身としては、ECなどの販売工程のみの最適化だけではなく、生産工程も最適化したいと思っている。
+
+### Reverse
+
+[Reverse](https://itunes.apple.com/jp/app/reverse-reverse-movie-camera/id1173143338?l=en&mt=8)という、シンプルな逆再生動画のアプリを年末にリリースした。  
+なぜか、エジプトのApp storeでランキングに入ったりと中東の方面で割と好調なので、継続開発したい。  
+プラットフォーム化して、中東の石油王に気に入られてExitするってのを妄想していますw
+
+### Band
+
+[Band](github.com/yayoc/Band)というiOSのライブラリを作成してみた。  
+アプリ実装で重要になる、ステートとビューの管理をシンプルに実現したいという気持ちを満たすために作ったシンプルなものだ。
+[StatefulViewController](https://github.com/aschuch/StatefulViewController)というのにインスパイアされている。
+まだまだブラッシュアップできる点があるので、更新していきたい。
+
+### websta.me
+
+お手伝いさせていただいている[websta](https://websta.me/)のリニューアルの実装を行った。  
+InstagramのAPI Policyの変更もあり、スケジュール的にもタイトだったんだけど、jQueryからReactへの移行などを行えた。  
+そのときに対応したことの一部などは[この記事](http://blog.yayoc.com/reactjs/2016/06/25/improve-performance-reactjs.html)にも書いている。
+
+## 趣味など
+
+### 本
+
+今年読んだ本で面白かったやつ。
+
+
+* [アジア新聞屋台村](https://www.amazon.co.jp/gp/product/B00ISQZQGG/ref=as_li_tf_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B00ISQZQGG&linkCode=as2&tag=yayo0b-22)
+
+高野秀行氏の本はいつ読んでも面白いし、旅行にいけた気分になるのでファン
+
+* [誰が音楽をタダにした？　巨大産業をぶっ潰した男たち](https://www.amazon.co.jp/gp/product/B01LYMTJ0M/ref=as_li_tf_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B01LYMTJ0M&linkCode=as2&tag=yayo0b-22)
+
+音楽業界についてもっと理解深めたいなと思ったので。MP3の誕生経緯とかエンジニアとしても楽しめる気がする。
+
+* [BLUE GIANT](https://www.amazon.co.jp/gp/product/B01LWT7UAQ/ref=as_li_tf_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B01LWT7UAQ&linkCode=as2&tag=yayo0b-22)
+
+今年一番ハマった漫画
+
+* [ビジョナリー・カンパニー２　飛躍の法則](https://www.amazon.co.jp/gp/product/4822242633/ref=as_li_tf_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=4822242633&linkCode=as2&tag=yayo0b-22)
+
+名著なやつ。
+
+### 映画・ドラマ
+
+今年、見て良かった映画・ドラマ(Netflix)  
+Black Mirrorは不気味だけど、すごく好きだった。  
+今更ながら水曜どうでしょうにハマって、そのお陰でベトナム旅行した。  
+
+* [エクス・マキナ](http://exmachina-movie.jp/)
+* [Underground](http://www.imdb.com/title/tt0114787/)
+* [House of Cards](https://www.netflix.com/title/70178217)
+* [Black Mirror](https://www.netflix.com/title/70264888)
+* [水曜どうでしょう](https://www.netflix.com/title/70264888?jbv=80105433&jbp=4&jbr=0)
+
+### 音楽
+
+2016年一番聞いていた、曲・アルバム。特にコメントはないけど、聞くジャンルの幅広げたい。
+
+* [Seoul by Amilla](https://itun.es/jp/3ECpp?i=255707104)
+* [76:14 by Global Communication](https://itun.es/jp/7RTuq)
+* [The Social Network by Trent Reznor & Atticus Ross](https://itun.es/jp/4BOLx)
+* [青い春 by ボギー](http://www.geocities.co.jp/MusicStar-Keyboard/8256/AOIHARU.html)
+* [No Me Gustas, Te Quiero By Tha Parrots](https://itun.es/jp/SNo2cb?i=1121512110)
+* [Give Me a Reason by Jagwar Ma](https://itun.es/jp/iu_Ndb?i=1134556543)
+
+## その他
+
+* [Tech in Asia Singapore 2016](http://startupjobs.asia/events/tech-in-asia-singapore-2016) に参加した
+
+  無料チケットの招待枠に応募したら見事当選したので、個人で行ってきた。  
+  インドのスタートアップ界隈の話や[Wantedly](https://www.wantedly.com/)の仲さんやLINE出澤さんのセッションなどもあり、大いに刺激を受けた。  
+
+* フジロック行った
+
+  初めてフジロックに参加した。  
+  メンツも豪華だし、ロケーション・ご飯と素晴らしすぎたので、今後は毎年行くかなと思っている。  
+  ベストアクトは[Battles](http://bttls.com/)だったと思います。
+
+* 海外旅行
+
+  今年は、シンガポール, ハワイ(社員旅行),　ハノイ・バンコクに行った。  
+  ベトナムは、ご飯美味しいしまた行きたい。  
+  バンコクにあるコワーキングスペース[The Hive](http://thehive.co.th/)はかなり快適だった(ネット早いし、カフェあるし、おしゃれだし、スタッフ親切だし)ので、おすすめです。
+
+## 2017年やること
+
+ぱっと今思いつくことで。
+
+* Webフロントエンド
+
+今一番力を入れて取り組んでいるのは JavaScript(es6), React, Redux, Webpackなどを利用したSingle Page Applicationの構築になります。  
+それほどキャッチアップしてきてなかったWebフロントエンドのトレンドを学んでいきたい。  
+とりあえず、今はDHHもおすすめしていた[JavaScript Allongé, the "Six" Edition](https://leanpub.com/javascriptallongesix)この本を読んでいる。
+
+* サーバレス
+
+これは積極的にやりたいってわけじゃないけど、スケールアウトとメンテナンスなどの運用コストを考えると、  
+[Lambda](https://aws.amazon.com/lambda/details/) + [API Gateway](https://aws.amazon.com/api-gateway/)でAPIを構築したほうが楽そうだと思うことが多いので、  
+必然的に覚えることになりそう。SPA, サーバレスでEC2使わず、個人サーバのコストも下げたい。
+
+* 英語
+
+現状、海外旅行とか簡単な会話とかなら問題ないけどぐらいのレベルなので、さっさと成長しないとまずい。  
+会社の学習支援制度とか積極的に利用していきたい。
+
+* デザイン
+
+UIがビジネスサイドからも求められている昨今では、デザイン力でプロダクトをアップデートできる力が求められていると思っている。  
+まだ明確なゴールが見出だせていないけど、再度、勉強し直したいと思っている。
+
+
+以上。2017年もよろしくお願いします。
