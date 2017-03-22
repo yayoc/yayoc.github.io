@@ -19,7 +19,7 @@ const UserRecord = Record({
 })
 ```
 
-で、下記のようにUserRecordを生成した場合、 
+下記のようにUserRecordを生成した場合、 
 
 ```JavaScript
 const user = new UserRecord({
