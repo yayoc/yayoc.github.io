@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "swagger-to-flowtypeでswaggerファイルからFlow type aliasを作成する"
-date:   2017-06-11 00:00:00 +0900
+date:   2017-06-19 00:00:00 +0900
 categories: js
 ---
 
