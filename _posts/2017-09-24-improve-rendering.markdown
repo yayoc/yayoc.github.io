@@ -8,7 +8,7 @@ categories: performnace
 先日、[tokyoto.js](https://kyotojs.connpass.com/event/64310/)でパフォーマンスについて ["What I did to improve performance score on Lighthouse"](https://speakerdeck.com/yayoc/what-i-did-to-improve-performance-score-on-lighthouse) というタイトルで簡単にLTさせてもらったのですが、
 レンダリング視点からのパフォーマンス向上について、この記事でもまとめてみたいと思います。
 
-### How browser is rendering your site
+### いかにブラウザがレンダリングするか
 
 レンダリングの向上について話す際に、いかにブラウザがサイトをレンダリングするかという仕組みを理解することが大事だと考えています。
 
@@ -39,9 +39,9 @@ DOM構築を停止してしまいます。
 では、レンダリングブロックを避けて、初回表示を高速化するためにどのようなことが考えられるでしょうか。  
 今回は[Lighthouse](https://github.com/GoogleChrome/lighthouse)を計測ツールとして、Performanceスコアで80点以上を出すために行ったこと下記について紹介します。
 
-### What I did to optimize critical rendering path
+### どのようにCritical Rendering Pathを最適化したか
 
-#### 1. Removing CSS from rendering blocks
+#### 1. Render-blockとなるCSSの削除
 
 まず、スタイルの読み込みについてです。  
 CSSは先述の通り、render blockとして扱われますので、  
@@ -50,7 +50,7 @@ CSSは先述の通り、render blockとして扱われますので、
 対応前は50KBあった一つのCSSファイルを分割することで、  
 1KBほどまでサイズダウンしたCritical CSSをロードするだけでよくなりました。
 
-#### 2. Reducing bundle size of JavaScript
+#### 2. JavaScriptファイルサイズの最適化
 
 JavaScriptに関しても、可能な限りファイルサイズを減らし、読み込みから実行までの時間を減らすことが求められます。  
 module bundlerとして**Webpack**を利用しているので、下記の機能を積極的に使うことで、JavaScriptの読み込み・実行を改善しました。
@@ -86,7 +86,7 @@ Webpack 3 で提供されたこの機能は`import`構文の解析により、�
 これまでのWebpackではモジュール一つ一つをクロージャとすることで、モジュールの独立性を保っていましたが、  
 Scope Hoistingを利用することで、実行速度の向上とファイルサイズの削除にも貢献します。
 
-#### 3. Showing fake header at first
+#### 3. 疑似ヘッダーの表示
 
 現在作成しているサイトではApplication Shellをデザインベースとして構成されており、
 Header部分にはロゴとユーザのログイン情報などを表示するためのメニューボタン、
@@ -98,7 +98,7 @@ JavaScriptのロード完了までblankページしか表示されないのは�
 疑似Headerをhtmlで構成し、JavaScript実行までは疑似ヘッダーを表示し、
 JavaScript読み込みが完了後、動的情報も付与されたHeaderでオーバラップする工夫を行っています。体感として、blankページの表示時間を減らすことができます。
 
-#### 4. Using Intersection Observer 
+#### 4. Intersection Observerの利用 
 
 Intersection Observerはオブザーブしている要素がスクリーン上に表示されているかどうかを簡単に抽出することができるAPIとなります。
 こちらのAPIを利用することで初期表示時に不必要なコンテンツのロードを避けることができます。
