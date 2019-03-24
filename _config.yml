@@ -18,3 +18,5 @@ gems: [jekyll-watch, jekyll-gist]
 
 # Build settings
 markdown: kramdown
+
+theme: jekyll-theme-cayman
