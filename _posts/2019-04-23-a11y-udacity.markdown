@@ -5,8 +5,8 @@ date: 2019-04-23 00:00:00 +0900
 categories: a11y
 ---
 
-[a11y](https://a11yproject.com/) をしっかり学びたいというモチベーションから無料で公開されている Web Accessibility のコースを受講しました。  
-こちらのコースは、Google のエンジニアである[Alice Boxhall](https://twitter.com/sundress)さんと**Rob Dodson**[Rob Dodson](https://twitter.com/rob_dodson)さんがインストラクターとして、
+[a11y](https://a11yproject.com/)をしっかり学びたいというモチベーションから無料で公開されているWeb Accessibilityのコースを受講しました。  
+こちらのコースは、Googleのエンジニアである[Alice Boxhall](https://twitter.com/sundress)さんと[Rob Dodson](https://twitter.com/rob_dodson)さんがインストラクターとして、
 
 1. Focus
 2. Semantics Basics
@@ -20,31 +20,31 @@ categories: a11y
 
 ![Web AIM WCAG 2.0 Checklist 2.1.1](https://i.imgur.com/6fVHHgP.png)
 
-WCAG でも定義されているように、すべての Web ページは機能がキーボードから扱えない場合以外は、基本的にキーボードから利用できるようにしなければいけません。
-キーボードだけでナビゲーションを可能にすることで、誰もが簡単に Web を操作することが可能になります。
+WCAGでも定義されているように、すべてのWebページは機能がキーボードから扱えない場合以外は、基本的にキーボードから利用できるようにしなければいけません。
+キーボードだけでナビゲーションを可能にすることで、誰もが簡単にWebを操作することが可能になります。
 
 ![Image of WEbAIM WCAG 2.0 Checklist 1.3.2 Meaningful Sequence](https://i.imgur.com/5LyC3RX.png)
 
-Tab 操作で Web サイトをスムーズに扱うためには、直感的にサイトを閲覧・ナビゲーションできる構成にすることが大切です。
-例えば、CSS などでエレメントの位置を変更した場合などにフォーカスが当たる順番が順不同になる可能性があるので注意が必要です。
+Tab操作でWebサイトをスムーズに扱うためには、直感的にサイトを閲覧・ナビゲーションできる構成にすることが大切です。
+例えば、CSSなどでエレメントの位置を変更した場合などにフォーカスが当たる順番が順不同になる可能性があるので注意が必要です。
 
 ### 非表示コンテンツの対応
 
-Modal などの非表示のコンテンツに対しては、フォーカスを当てない方がユーザビリティは向上します。これを実現するために**tabindex** 属性に-1 を指定することで、対象の DOM にフォーカスが当たらないようになります。
+Modalなどの非表示のコンテンツに対しては、フォーカスを当てない方がユーザビリティは向上します。これを実現するために**tabindex**属性に-1を指定することで、対象のDOMにフォーカスが当たらないようになります。
 ![Image of tabindex="-1"](https://i.imgur.com/wNocbj6.png)
 
 > Avoid using tabindex values greater than 0. Doing so will make it difficult for people who rely on assistive technology to navigate and operate page content  
 > [tabindex - HTML: Hypertext Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 
-**Tabindex に 0 以上の値を指定することは非推奨とされています。** tabindex でフォーカスの当たる順番を書き換えると、assistive technology を使って Web ページを閲覧しているユーザにとって、操作しにくいものになるからです。
-基本的には、DOM の構成を直感的に扱えるものにし、Tabindex は非表示コンテンツの対応だけ、-1 を指定するというのがいいでしょう。
+**Tabindexに0以上の値を指定することは非推奨とされています。** tabindexでフォーカスの当たる順番を書き換えると、assistive technologyを使ってWebページを閲覧しているユーザにとって、操作しにくいものになるからです。
+基本的には、DOMの構成を直感的に扱えるものにし、Tabindexは非表示コンテンツの対応だけ、-1を指定するというのがいいでしょう。
 
 ### フォーカスの管理
 
 [Image of Managing Focus](https://classroom.udacity.com/courses/ud891/lessons/7962031279/concepts/79667314390923)
 
-Radio button グループなどのコンポーネントでは、フォーカスの管理をすることが大切になっています。各コンポーネントがどのように振る舞うべきかについては[WAI-ARIA Authorizing Practices 1.1](https://www.w3.org/TR/wai-aria-practices-1.1/) に書かれています。
-このコースでは、Radio Group の扱いについて実装コードをふまえつつ、紹介されています。
+Radio buttonグループなどのコンポーネントでは、フォーカスの管理をすることが大切になっています。各コンポーネントがどのように振る舞うべきかについては[WAI-ARIA Authorizing Practices 1.1](https://www.w3.org/TR/wai-aria-practices-1.1/)に書かれています。
+このコースでは、Radio Groupの扱いについて実装コードをふまえつつ、紹介されています。
 
 ## Assistive technology
 
@@ -52,24 +52,24 @@ Radio button グループなどのコンポーネントでは、フォーカス�
 
 ![Image of Programmatically expressed semantics](https://i.imgur.com/bVRqFur.png)
 
-この章では、実際に Google で盲目ながらプロダクトマネージャーをされている[Victor Tsaran](https://twitter.com/vick08)さんが、実際にどのように Screen reader を利用して Web サイトを利用されているかを紹介されています。
-レッスンの中では実際に Screen reader を使ってみるという内容もあり、これまで一度も使ったことのなかった Mac の`VoiceOver`を利用し、サイトがどのように読まれるか体験する機会になりました。
+この章では、実際にGoogleで盲目ながらプロダクトマネージャーをされている[Victor Tsaran](https://twitter.com/vick08)さんが、実際にどのようにScreen readerを利用してWebサイトを利用されているかを紹介されています。
+レッスンの中では実際にScreen readerを使ってみるという内容もあり、これまで一度も使ったことのなかったMacの`VoiceOver`を利用し、サイトがどのように読まれるか体験する機会になりました。
 
 ### スクリーンリーダーがどのように動くか
 
 ![Image of Accessibility tree](https://i.imgur.com/6kQj1xG.png)
 
-Screen reader は DOM から作られる **accessibility tree**を読み込んで、コンテンツを読み上げます。そのため、コンテンツの順序はユーザが理解しやすいものに構成するべきです。**理解しやすい見出しを用意してあげることは screen reader を利用しやすくする上で重要です。** 逆に言えば、コンテンツが直感的に並べられていない場合、Screen reader を利用するユーザにとって、そのサイトは使いにくいものになってしまいます。
+Screen readerはDOMから作られる **accessibility tree**を読み込んで、コンテンツを読み上げます。そのため、コンテンツの順序はユーザが理解しやすいものに構成するべきです。**理解しやすい見出しを用意してあげることはscreen readerを利用しやすくする上で重要です。** 逆に言えば、コンテンツが直感的に並べられていない場合、Screen readerを利用するユーザにとって、そのサイトは使いにくいものになってしまいます。
 
 ![Image of 1.3.2 Meaningful Sequence](https://i.imgur.com/ONzuD2B.png)
 
-また、Screen reader は Input フィールドなどでは、**Role, Name, State, Value**の値を読み上げます。フォームを実装する際には、読み上げられた情報がフォームを操作する上で、必要十分なものか確認するべきでしょう。
+また、Screen readerはInputフィールドなどでは、**Role, Name, State, Value**の値を読み上げます。フォームを実装する際には、読み上げられた情報がフォームを操作する上で、必要十分なものか確認するべきでしょう。
 
 ![Image of Role, Name, State, Value](https://i.imgur.com/Bf0aas9.png)
 
 Link についても意味のある情報を付与してあげることも大事です。
-上記のような、`span`タグに onclick イベントを与えた実装をした場合、screen reader はリンクとして`span`タグを認識しません。
-また、`a`タグに onclick イベントを組み込んだ場合でも、ページがどのように振る舞うかは認識できません。SPA のようなサイトを実装する場合には特に注意が必要だと思います。
+上記のような、`span`タグにonclickイベントを与えた実装をした場合、screen readerはリンクとして`span`タグを認識しません。
+また、`a`タグにonclickイベントを組み込んだ場合でも、ページがどのように振る舞うかは認識できません。SPAのようなサイトを実装する場合には特に注意が必要だと思います。
 
 ![Image of link anti-patterns](https://i.imgur.com/ez8jLe4.png)
 
@@ -81,32 +81,32 @@ Link についても意味のある情報を付与してあげることも大事
 2. As general rule, You should not try to control the experience screen user will have
 
 意味のある見出し・リンクテキスト、綺麗な構成を用意しましょう。
-一般的に、Screen reader が体験するサイト利用の方法をコントロールしようとするのはやめましょう。そのために、1 の項目をちゃんと守ることが大事です。
-前述した Focus の章でもありましたが、Screen Reader などの Assistive Technology を使う方のアクセシビリティを向上させる上でも、
+一般的に、Screen reader が体験するサイト利用の方法をコントロールしようとするのはやめましょう。そのために、1の項目をちゃんと守ることが大事です。
+前述したFocusの章でもありましたが、Screen ReaderなどのAssistive Technologyを使う方のアクセシビリティを向上させる上でも、
 **意味のある見出し・リンクテキスト、綺麗な構成は考慮する必要があります。**
 
 ## ARIA
 
-このセッションでは、[ARIA]([ARIA - Accessibility | MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA))について学びました。
-ARIA というのは`Accessible Rich Internet Applications`の略で、Web コンテンツをよりアクセスしやすいようにする手法です。
+このセッションでは、[ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)について学びました。
+ARIAというのは`Accessible Rich Internet Applications`の略で、Web コンテンツをよりアクセスしやすいようにする手法です。
 
-ただし、ARIA は HTML を補足する手法なので、基本的には、HTML のセマンティックとして正しい要素が既に存在しているのであれば、それを利用することを優先するべきと考えられています。
+ただし、ARIAはHTMLを補足する手法なので、基本的には、HTMLのセマンティックとして正しい要素が既に存在しているのであれば、それを利用することを優先するべきと考えられています。
 
-また、ARIA は accessibility tree を変更することしかしません。下記図のように、要素の外観、振る舞い、フォーカス、キーボードイベントの振る舞いは変更しません。ネイティブ要素はビルトインでキーボードアクセシビリティはサポートされているので、この点でも基本的にネイティブ要素を利用するメリットが大きいです。
+また、ARIAはaccessibility treeを変更することしかしません。下記図のように、要素の外観、振る舞い、フォーカス、キーボードイベントの振る舞いは変更しません。ネイティブ要素はビルトインでキーボードアクセシビリティはサポートされているので、この点でも基本的にネイティブ要素を利用するメリットが大きいです。
 
 ![Image of what ARIA can modify](https://i.imgur.com/qqlgdG7.png)
 
-このセッションでは、relationship attribute についての紹介であったり、
-Screen reader だけに情報を提供する Invisible content の扱いも紹介されています。Invisible content の実装に関しては[この記事](https://webaim.org/techniques/css/invisiblecontent/)もおすすめされています。
+このセッションでは、relationship attributeについての紹介であったり、
+Screen readerだけに情報を提供するInvisible contentの扱いも紹介されています。Invisible contentの実装に関しては[この記事](https://webaim.org/techniques/css/invisiblecontent/)もおすすめされています。
 
 ![Image of aria-desribedby](https://i.imgur.com/dq4JZ2j.png)
 
-また、セッションの後半では[Aria live regions](ARIA Live Regions - Accessibility | MDN) についての説明もなされています。
-ARIA は学ぶ範囲が広いので、[WAI-ARIA Authoring Practices 1.1](https://www.w3.org/TR/wai-aria-practices-1.1/)を使ってベストプラクティスとデザインパターンを学習するのがいいようです。
+また、セッションの後半では[Aria live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) についての説明もなされています。
+ARIAは学ぶ範囲が広いので、[WAI-ARIA Authoring Practices 1.1](https://www.w3.org/TR/wai-aria-practices-1.1/)を使ってベストプラクティスとデザインパターンを学習するのがいいようです。
 
 ## Style
 
-最後の Style のセクションでは、レスポンシブデザイン、フォーカスのスタイル、コントラスについての説明など多岐にわたり、CSS の取り込み方やカラーの選択方法などからアクセシビリティの改善について説明されていました。
+最後のStyleのセクションでは、レスポンシブデザイン、フォーカスのスタイル、コントラスについての説明など多岐にわたり、CSSの取り込み方やカラーの選択方法などからアクセシビリティの改善について説明されていました。
 
 ### リサイズ
 
@@ -116,55 +116,59 @@ ARIA は学ぶ範囲が広いので、[WAI-ARIA Authoring Practices 1.1](https:/
 
 ![Image of antipattern: user-scalable=no](https://i.imgur.com/SOI60mB.png)
 
-また、user-scalable=no を指定するのは、アンチパターンとして紹介されています。ユーザは自由に表示倍率を変更可能にできるようにしないといけません。
+また、user-scalable=noを指定するのは、アンチパターンとして紹介されています。ユーザは自由に表示倍率を変更可能にできるようにしないといけません。
 
 ### タッチ領域
 
 ![Image of touch target size](https://i.imgur.com/sOHT1c3.png)
 
-ボタンのサイズに関しても言及されており、タッチ領域は 48dp を最低にしないといけません。仮にボタン自身が小さい場合は、padding を加えることでタッチ領域を広げる工夫をするべきです。
+ボタンのサイズに関しても言及されており、タッチ領域は48dpを最低にしないといけません。仮にボタン自身が小さい場合は、paddingを加えることでタッチ領域を広げる工夫をするべきです。
 
 ### コントラスト
 
 ![Image of 1.4.3 Contrast](https://i.imgur.com/dhTIoi8.png)
 
-大きなテキストに関して、文字色と背景色のコントラストは最低でも 3:1 以上となるべきです。
+大きなテキストに関して、文字色と背景色のコントラストは最低でも3:1以上となるべきです。
 
 ![Image: ratio of color-vision deficiency](https://i.imgur.com/l1yULzM.png)
 
-また、色覚異常を持つ方は男性だと 12 人に 1 人、女性だと 200 人に 1 人の割合とされており、色覚異常者にも重要な表示が読みやすいようにするためにも、このコントラストのルールは守るべきでしょう。
+また、色覚異常を持つ方は男性だと12人に1人、女性だと200人に1人の割合とされており、色覚異常者にも重要な表示が読みやすいようにするためにも、このコントラストのルールは守るべきでしょう。
 
-コントラストの Audit は Lighthouse を使うことで簡単に行うことができます。
+コントラストのAuditはLighthouseを使うことで簡単に行うことができます。
 
 ![Result of lighthouse](https://i.imgur.com/I6HJkY4.png)
 
-Accessibility のコントラストの結果などが簡単に分かります。
+Accessibilityのコントラストの結果などが簡単に分かります。
 それ以外にも[axe](https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US)というアクセシビリティテストツール もあるので、使ってみるといいかもしれません。
 
 ![Result of axe](https://i.imgur.com/Tv40ENX.png)
 
-[同一サイト](https://github.com/udacity/ud891/tree/gh-pages/lesson6-styling/03-contrast-audit)の検証結果は、Lighthouse で 86 点だったのに対し、axe の結果は**impact: serious**と言及されていて、より厳しさを感じます。
+[同一サイト](https://github.com/udacity/ud891/tree/gh-pages/lesson6-styling/03-contrast-audit)の検証結果は、Lighthouseで86点だったのに対し、axeの結果は**impact: serious**と言及されていて、より厳しさを感じます。
 
 ## まとめ
 
 ![good a11y = good UX](https://i.imgur.com/GhmwqFW.png)
 
-最後のパートで、Rob Robinson さんが、
+最後のパートで、Rob Robinsonさんが、
 
 > Having empathy is a huge part of creating an accessible product.  
-> と仰っていました。直訳すると
-> 共感を持つことは、アクセシビリティの高いプロダクトを作るための大きな割合をしめる  
-> とかでしょうか。Screen reader を使っている方がどのようにサイトを利用しているか、色覚異常の方にどのように見えるか、などをまず考えてみるということがアクセシビリティの高い Web サイトを作る大きな原動力になるということだと思います。
+
+と仰っていました。
+直訳すると
+
+> 共感を持つということは、アクセシビリティの高いプロダクトを作る大きな構成要素です
+
+とかでしょうか。Screen reader を使っている方がどのようにサイトを利用しているか、色覚異常の方にどのように見えるか、などをまず考えてみるということがアクセシビリティの高いWebサイトを作る大きな原動力になるということだと思います。
 
 僕自身恥ずかしながら、このコースを通して初めて Screen reader を使ってみて、アクセシビリティの重要性を改めて痛感しました。
-**good a11y = good UX**と言われているように、アクセシビリティは UX に影響する大きな要素であるため、常日頃検証ツールを利用して、チェックすることが必要でしょう。
+**good a11y = good UX**と言われているように、アクセシビリティは UX に影響する大きな要素であるため、常日頃、検証ツールを利用してチェックすることが必要でしょう。
 
-また、アメリカでは 2018 年に Web アクセシビリティを対象とした起訴が**2285 件**あったそうで、これは昨年と比べると 181%増加しているとのことです。ビジネス観点からもアクセシビリティに対する関心は大きくなっているのではないでしょうか。
+また、アメリカでは2018年にWebアクセシビリティを対象とした起訴が**2285件**あったそうで、これは昨年と比べると 181%増加しているとのことです。ビジネス観点からもアクセシビリティに対する関心は大きくなっているのではないでしょうか。
 
 ![2018 ADA Web Accessibility Lawsuit Recap Report](https://i.imgur.com/u1XEN9b.png)
 **2018 ADA Web Accessibility Lawsuit Recap Report**
 
-こちらの Web Accessiblity コースですが、全部で 6 時間ぐらいなんと**無料**なので、a11y を勉強し直そうという方は一度見てみるといいかと思います。  なお、なぜか、ネイティブアプリだと開けなかったので、Web で閲覧することをお勧めします。
+こちらのWeb Accessiblityコースですが、全部で6時間ぐらいなんと**無料**なので、a11yを勉強し直そうという方は一度見てみるといいかと思います。なお、なぜか、ネイティブアプリだと開けなかったので、Webで閲覧することをお勧めします。
 
 ## 参考
 
